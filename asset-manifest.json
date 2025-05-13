@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/invitacion-de-boda/static/css/main.7e7dd544.css",
+    "main.js": "/invitacion-de-boda/static/js/main.91e61252.js",
+    "static/media/png": "/invitacion-de-boda/static/media/53910f5ea507e24c49479e91a5022f34.b7ec387b3c84e3bbdf70.png",
+    "static/media/header_5.jpg": "/invitacion-de-boda/static/media/header_5.ca06b7132b099f4aa699.jpg",
+    "static/media/V+M pedida-075.jpg": "/invitacion-de-boda/static/media/V+M pedida-075.d786afb61f2c6c9cad37.jpg",
+    "static/media/V+M pedida-031.jpg": "/invitacion-de-boda/static/media/V+M pedida-031.b763714978a5d0be2582.jpg",
+    "static/media/V+M pedida-002.jpg": "/invitacion-de-boda/static/media/V+M pedida-002.d4ea4263df33510cdb2a.jpg",
+    "static/media/V+M pedida-053.jpg": "/invitacion-de-boda/static/media/V+M pedida-053.82d505e5a55e6ee06759.jpg",
+    "static/media/V+M pedida-021.jpg": "/invitacion-de-boda/static/media/V+M pedida-021.0c82c83bf98ab800a7c5.jpg",
+    "static/media/V+M pedida-027.jpg": "/invitacion-de-boda/static/media/V+M pedida-027.00c0d0b60aeb235b6b21.jpg",
+    "static/media/bodyBackground3.jpg": "/invitacion-de-boda/static/media/bodyBackground3.e5a63d70754aedff5c2e.jpg",
+    "static/media/V+M pedida-069.jpg": "/invitacion-de-boda/static/media/V+M pedida-069.33260cd070f26ac156b4.jpg",
+    "static/media/V+M pedida-041.jpg": "/invitacion-de-boda/static/media/V+M pedida-041.a03cf04a8ee15fad5a07.jpg",
+    "static/media/Zapfino.woff": "/invitacion-de-boda/static/media/Zapfino.a0a184c9e7b12e16d235.woff",
+    "static/media/background_1.jpeg": "/invitacion-de-boda/static/media/background_1.84eef42ebb45619e8972.jpeg",
+    "static/media/image_vestimenta.jpeg": "/invitacion-de-boda/static/media/image_vestimenta.17202c93b54830578156.jpeg",
+    "static/media/invitacion_fondo_2.jpeg": "/invitacion-de-boda/static/media/invitacion_fondo_2.fc9956e77258b5cd567b.jpeg",
+    "static/media/background_places.jpeg": "/invitacion-de-boda/static/media/background_places.ded17c04a9fdfaa30b36.jpeg",
+    "static/media/background_program.jpeg": "/invitacion-de-boda/static/media/background_program.641fdfa0ba673c306818.jpeg",
+    "static/media/invitacion_fondo_1.jpeg": "/invitacion-de-boda/static/media/invitacion_fondo_1.16114c04ad9c98f11ee0.jpeg",
+    "static/media/timeline_background.jpeg": "/invitacion-de-boda/static/media/timeline_background.cb902135223283165aa7.jpeg",
+    "static/media/invitacion_fondo_3.jpeg": "/invitacion-de-boda/static/media/invitacion_fondo_3.b2d74f1352f37902340c.jpeg",
+    "index.html": "/invitacion-de-boda/index.html",
+    "main.7e7dd544.css.map": "/invitacion-de-boda/static/css/main.7e7dd544.css.map",
+    "main.91e61252.js.map": "/invitacion-de-boda/static/js/main.91e61252.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e7dd544.css",
+    "static/js/main.91e61252.js"
+  ]
+}
