@@ -18,7 +18,7 @@ export default function TimelineProgram() {
     <Timeline position="alternate">
       <TimelineItem>
         <TimelineOppositeContent
-          sx={{ m: "auto 0" }}
+          sx={{ m: "auto 0", fontSize: "1.8em" }}
           align="right"
           color="text.secondary"
         >
@@ -32,14 +32,17 @@ export default function TimelineProgram() {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent sx={{ py: "20px" }}>
-          <Typography variant="h6" component="span">
+          <Typography sx={{ fontSize: "1.8em" }} component="span">
             Ceremonia
           </Typography>
         </TimelineContent>
       </TimelineItem>
 
       <TimelineItem>
-        <TimelineOppositeContent color="text.secondary" sx={{ m: "auto 0" }}>
+        <TimelineOppositeContent
+          color="text.secondary"
+          sx={{ m: "auto 0", fontSize: "1.8em" }}
+        >
           06:00 pm
         </TimelineOppositeContent>
         <TimelineSeparator>
@@ -50,14 +53,14 @@ export default function TimelineProgram() {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent sx={{ py: "20px" }}>
-          <Typography variant="h6" component="span">
+          <Typography sx={{ fontSize: "1.8em" }} component="span">
             Recepción
           </Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent
-          sx={{ m: "auto 0" }}
+          sx={{ m: "auto 0", fontSize: "1.8em" }}
           align="right"
           color="text.secondary"
         >
@@ -71,13 +74,16 @@ export default function TimelineProgram() {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent sx={{ py: "20px" }}>
-          <Typography variant="h6" component="span">
+          <Typography sx={{ fontSize: "1.8em" }} component="span">
             Cena
           </Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
-        <TimelineOppositeContent color="text.secondary" sx={{ m: "auto 0" }}>
+        <TimelineOppositeContent
+          color="text.secondary"
+          sx={{ m: "auto 0", fontSize: "1.8em" }}
+        >
           08:00 pm
         </TimelineOppositeContent>
         <TimelineSeparator>
@@ -88,7 +94,7 @@ export default function TimelineProgram() {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent sx={{ py: "20px" }}>
-          <Typography variant="h6" component="span">
+          <Typography sx={{ fontSize: "1.8em" }} component="span">
             Vals
           </Typography>
         </TimelineContent>

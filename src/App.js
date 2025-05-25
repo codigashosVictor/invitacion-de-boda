@@ -2,6 +2,9 @@ import "./index.css";
 import { keyframes } from "@mui/system";
 import TimeLineProgram from "../src/timeline";
 import Carousel from "./Carousel-img";
+import HeroSection from "./Hero";
+import AnimatedImage from "./img-savethedate";
+import ScrollReveal from "./ScrollReveal";
 import {
   Typography,
   Button,
@@ -13,72 +16,23 @@ import {
   Card,
   CardContent,
 } from "@mui/material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
 import ChurchIcon from "@mui/icons-material/Church";
 import { Check, Favorite, LocalBar, LocationOn } from "@mui/icons-material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
 import Countdown from "react-countdown";
-import backgroundHeaderImg_5 from "../src/img/header_5.jpg";
-import background1 from "../src/img/invitacion_fondo_1.jpeg";
-import background2 from "../src/img/invitacion_fondo_2.jpeg";
-import background3 from "../src/img/invitacion_fondo_3.jpeg";
-import background4 from "../src/img/timeline_background.jpeg";
-import bodyBackground3 from "../src/img/bodyBackground3.jpg";
-import bodyBackground5 from "../src/img/53910f5ea507e24c49479e91a5022f34.png";
-import background_1 from "../src/img/background_1.jpeg";
-import background_vestimenta from "../src/img/image_vestimenta.jpeg";
-import background_places from "../src/img/background_places.jpeg";
-import background_prgram from "../src/img/background_program.jpeg";
 import { LocalizationProvider, StaticDatePicker } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { PickersDay } from "@mui/x-date-pickers/PickersDay";
 import { styled } from "@mui/material/styles";
 import { es } from "date-fns/locale";
 
-// import fotos pareja
-import vm_list_photo_1 from "../src/img/fotos_pareja/V+M pedida-002.jpg";
-import vm_list_photo_2 from "../src/img/fotos_pareja/V+M pedida-021.jpg";
-import vm_list_photo_3 from "../src/img/fotos_pareja/V+M pedida-027.jpg";
-import vm_list_photo_4 from "../src/img/fotos_pareja/V+M pedida-031.jpg";
-import vm_list_photo_5 from "../src/img/fotos_pareja/V+M pedida-041.jpg";
-import vm_list_photo_6 from "../src/img/fotos_pareja/V+M pedida-069.jpg";
-import vm_list_photo_7 from "../src/img/fotos_pareja/V+M pedida-075.jpg";
-import vm_list_photo_8 from "../src/img/fotos_pareja/V+M pedida-053.jpg";
+// images
+import img_portada from "../src/img/header_5.jpg";
+import img_timeline from "../src/img/background_1.jpeg";
+import img_places from "../src/img/background_places.jpeg";
 
 const weddingDate = new Date("2025-09-06T18:00:00").getTime();
-
-const itemData = [
-  {
-    img: vm_list_photo_1,
-    title: "Bed",
-  },
-  {
-    img: vm_list_photo_2,
-    title: "Blinds",
-  },
-  {
-    img: vm_list_photo_3,
-    title: "Chairs",
-  },
-  {
-    img: vm_list_photo_4,
-    title: "Laptop",
-  },
-  {
-    img: vm_list_photo_5,
-    title: "Doors",
-  },
-  {
-    img: vm_list_photo_6,
-    title: "Coffee",
-  },
-
-  {
-    img: vm_list_photo_7,
-    title: "Coffee",
-  },
-];
 
 // icon heart
 const PinkHeart = styled(Favorite)({
@@ -143,11 +97,11 @@ const blink = keyframes`
   0%, 100% { opacity: 1; transform: translateY(0); }
   50% { opacity: 0.5; transform: translateY(5px); }
 `;
-
+// main colors #C38C3F, #233e30, #F6D78B, #a29782, #8C5A1F, #BF8A4C
 const AnimatedButton = styled(Button)({
   animation: `${blink} 1.5s infinite`,
   fontSize: "2rem",
-  color: "white", // color verde, puedes cambiarlo
+  color: "white",
   backgroundColor: "transparent",
   border: "none",
   boxShadow: "none",
@@ -155,8 +109,7 @@ const AnimatedButton = styled(Button)({
     backgroundColor: "transparent",
     boxShadow: "none",
   },
-}); // main colors #C38C3F, #233e30, #F6D78B, #a29782, #8C5A1F, #BF8A4C
-
+});
 // App.js
 export default function App() {
   const selectedDate = new Date(2025, 8, 6);
@@ -165,107 +118,13 @@ export default function App() {
   return (
     <main>
       {/* Header Main */}
-      <Box
-        height="100vh"
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-between"
-        alignItems="center"
-        textAlign="center"
-        sx={{
-          backgroundImage: `url(${backgroundHeaderImg_5})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          "&::after": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.4)",
-          },
-        }}
-      >
-        <Box
-          sx={{
-            position: "relative",
-            zIndex: 1,
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-            textAlign: "center",
-            py: 4,
-          }}
-        >
-          <Typography
-            variant="h1"
-            component="h1"
-            textAlign="center"
-            sx={{
-              color: "#BF8A4C",
-              fontFamily: "'Dancing Script', cursive",
-              fontWeight: "bold",
-              fontSize: {
-                xs: "4rem", // mobile (extra small)
-                sm: "5.5rem", // tablet small
-                md: "5.5rem", // tablet/desktop medium
-                lg: "5.5rem", // desktop large
-              },
-            }}
-            paddingTop={1}
-          >
-            Nos Casamos
-          </Typography>
-          <Box>
-            <Typography
-              variant="h2"
-              sx={{
-                fontFamily: "'Zapfino', cursive",
-                color: "#fff",
-              }}
-            >
-              Michell
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: "'Alex Brush', cursive",
-                fontSize: { xs: "2.5rem", md: "3.5rem" },
-                color: "#fff",
-                mt: -2,
-              }}
-            >
-              &amp;
-            </Typography>
-            <Typography
-              variant="h2"
-              sx={{ fontFamily: "'Zapfino', cursive", color: "#fff", pt: 1 }}
-            >
-              Victor
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: "'Dancing Script', cursive",
-                fontSize: "1.5rem",
-                color: "#BF8A4C",
-                mt: 1,
-              }}
-            >
-              06.09.2025
-            </Typography>
-          </Box>
-          <AnimatedButton>
-            <KeyboardArrowDownIcon
-              sx={{
-                fontSize: "2em",
-                color: "#fff",
-              }}
-            />
-          </AnimatedButton>
-        </Box>
-      </Box>
+      <div>
+        <HeroSection
+          img_portada={img_portada}
+          AnimatedButton={AnimatedButton}
+        />
+        {/* Puedes seguir con más secciones aquí */}
+      </div>
 
       <Box
         height="100%"
@@ -274,11 +133,12 @@ export default function App() {
         justifyContent="space-between"
         alignItems="center"
         textAlign="center"
-        sx={{
-          backgroundImage: `url(${background_1})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        // sx={{
+        //   backgroundImage: `url(${background_1})`,
+        //   backgroundSize: "100%",
+        //   backgroundPosition: "center",
+        //   backgroundRepeat: "no-repeat",
+        // }}
       >
         <Box
           maxWidth="sm"
@@ -290,51 +150,15 @@ export default function App() {
             textAlign: "center",
           }}
         >
-          <Typography
-            variant="h1"
-            component="h1"
-            paddingTop={20}
-            sx={{
-              fontFamily: "'Great Vibes', cursive",
-              letterSpacing: ".4rem",
-              fontSize: {
-                xs: "2.5rem", // mobile (extra small)
-                sm: "4.5rem", // tablet small
-                md: "5.5rem", // tablet/desktop medium
-                lg: "6.5rem", // desktop large
-              },
-              background:
-                "linear-gradient(90deg, #213628 0%, #C38C3F 50%, #213628 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            ¡Estas Invitado!
-          </Typography>
+          <ScrollReveal>
+            <SeccionInvitacion />
+          </ScrollReveal>
 
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              // fontFamily: "'Playfair Display', cursive",
-              paddingTop: "1rem",
-            }}
-          >
-            Nos encantaria que seas parte de este momento tan especial para
-            nosotros.
-          </Typography>
-
-          <Grid
-            container
-            justifyContent="center"
-            paddingTop={6}
-            paddingBottom={5}
-          >
+          <Grid container justifyContent="center">
             <Card
               sx={{
                 bgcolor: "#b6c0b0",
                 maxWidth: 500,
-                borderRadius: "15px",
               }}
             >
               <CardContent>
@@ -361,18 +185,26 @@ export default function App() {
               </CardContent>
             </Card>
           </Grid>
+
+          <Box pt={5}>
+            <AnimatedImage />
+          </Box>
+
           <Grid container spacing={0} justifyContent="center">
-            <Typography
-              variant="h4"
-              textAlign="center"
-              sx={{
-                fontFamily: "'Zapfino'",
-                color: "#a29782",
-                paddingTop: "2.5em",
-              }}
-            >
-              Save The Date
-            </Typography>
+            <ScrollReveal duration={1} ease="easeOut" direction="down">
+              <Typography
+                variant="h4"
+                textAlign="center"
+                sx={{
+                  fontFamily: "'Zapfino'",
+                  color: "#a29782",
+                  paddingTop: "2.5em",
+                }}
+                data-aos="fade-right"
+              >
+                Save The Date
+              </Typography>
+            </ScrollReveal>
             <Grid size={12}>
               <LocalizationProvider
                 dateAdapter={AdapterDateFns}
@@ -427,17 +259,20 @@ export default function App() {
               </LocalizationProvider>
             </Grid>
           </Grid>
-          <Grid size={12} paddingBottom={30}>
-            <Typography
-              variant="h4"
-              textAlign="center"
-              sx={{
-                fontFamily: "'Zapfino'",
-                color: "#a29782",
-              }}
-            >
-              Faltan...
-            </Typography>
+          <Grid size={12} pt={5} paddingBottom={5}>
+            <ScrollReveal direction="up">
+              <Typography
+                variant="h4"
+                textAlign="center"
+                sx={{
+                  fontFamily: "'Zapfino'",
+                  color: "#a29782",
+                }}
+                data-aos="fade-left"
+              >
+                Faltan...
+              </Typography>
+            </ScrollReveal>
             <Countdown
               date={weddingDate}
               renderer={({ days, hours, minutes, seconds }) => (
@@ -670,7 +505,7 @@ export default function App() {
             left: "0px",
             right: "0px",
             bottom: "20px",
-            backgroundImage: `url(${background_places})`,
+            backgroundImage: `url(${img_places})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "blur(20px)",
@@ -683,7 +518,7 @@ export default function App() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: `url(${background_places})`,
+            backgroundImage: `url(${img_places})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             zIndex: 2,
@@ -702,126 +537,130 @@ export default function App() {
         >
           <Grid>
             {/* Church */}
-            <Box mt={3}>
-              <ChurchIcon
-                sx={{ fontSize: "6em", color: "#e1cfa6" }}
-              ></ChurchIcon>
-              <Typography
-                variant="h4"
-                sx={{
-                  fontFamily: "'Zapfino'",
-                  color: "#e1cfa6",
-                  fontWeight: "bold",
-                }}
-              >
-                Ceremonia
-              </Typography>
-              <Grid
-                container
-                direction="row"
-                spacing={4}
-                justifyContent="center"
-                alignItems="center"
-                display="flex"
-                textAlign="center"
-              >
-                <Grid>
-                  <Typography variant="h6" color="#a29782">
-                    11va IAFCJ
-                  </Typography>
-                </Grid>
-                <Divider
-                  orientation="vertical"
-                  flexItem
+            <ScrollReveal direction="right">
+              <Box mt={3}>
+                <ChurchIcon
+                  sx={{ fontSize: "6em", color: "#e1cfa6" }}
+                ></ChurchIcon>
+                <Typography
+                  variant="h4"
                   sx={{
-                    borderColor: "#C38C3F",
-                    height: "3rem",
-                    mx: 1,
+                    fontFamily: "'Zapfino'",
+                    color: "#e1cfa6",
+                    fontWeight: "bold",
                   }}
-                />
-                <Grid>
-                  <Typography variant="h6" color="#a29782">
-                    04:00 pm
-                  </Typography>
-                </Grid>
-              </Grid>
-
-              <Grid
-                container
-                columnSpacing={{ xs: 1 }}
-                justifyContent="center"
-                display="flex"
-              >
-                <Grid size={12} paddingBottom={4}>
-                  <Typography variant="caption" color="#213628">
-                    Calle José Manuel Velasco 11, Nueva Tijuana, 22435 Tijuana,
-                    B.C.
-                  </Typography>
-                </Grid>
-                <Grid size={12}>
-                  <Button
-                    variant="contained"
+                >
+                  Ceremonia
+                </Typography>
+                <Grid
+                  container
+                  direction="row"
+                  spacing={4}
+                  justifyContent="center"
+                  alignItems="center"
+                  display="flex"
+                  textAlign="center"
+                >
+                  <Grid>
+                    <Typography variant="h6" color="#a29782">
+                      11va IAFCJ
+                    </Typography>
+                  </Grid>
+                  <Divider
+                    orientation="vertical"
+                    flexItem
                     sx={{
-                      color: "#213628",
-                      background:
-                        "linear-gradient(90deg, #e1cfa6 0%, #e1cfa6 50%, #e1cfa6 100%)",
-                      borderRadius: "50px", // fully rounded
-                      padding: "10px 20px",
+                      borderColor: "#C38C3F",
+                      height: "3rem",
+                      mx: 1,
                     }}
-                    endIcon={
-                      <LocationOn sx={{ color: "#a29782" }}></LocationOn>
-                    }
-                  >
-                    Como Llegar
-                  </Button>
+                  />
+                  <Grid>
+                    <Typography variant="h6" color="#a29782">
+                      04:00 pm
+                    </Typography>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Box>
+
+                <Grid
+                  container
+                  columnSpacing={{ xs: 1 }}
+                  justifyContent="center"
+                  display="flex"
+                >
+                  <Grid size={12} paddingBottom={4}>
+                    <Typography variant="caption" color="#213628">
+                      Calle José Manuel Velasco 11, Nueva Tijuana, 22435
+                      Tijuana, B.C.
+                    </Typography>
+                  </Grid>
+                  <Grid size={12}>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        color: "#213628",
+                        background:
+                          "linear-gradient(90deg, #e1cfa6 0%, #e1cfa6 50%, #e1cfa6 100%)",
+                        borderRadius: "50px", // fully rounded
+                        padding: "10px 20px",
+                      }}
+                      endIcon={
+                        <LocationOn sx={{ color: "#a29782" }}></LocationOn>
+                      }
+                    >
+                      Como Llegar
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Box>
+            </ScrollReveal>
 
             {/* Ceremonia */}
-            <Box py={10}>
-              <LocalBar sx={{ fontSize: "6em", color: "#e1cfa6" }}></LocalBar>
-              <Typography
-                variant="h4"
-                sx={{
-                  fontFamily: "'Zapfino'",
-                  color: "#e1cfa6",
-                  fontWeight: "bold",
-                }}
-              >
-                Recepccion
-              </Typography>
+            <ScrollReveal direction="left">
+              <Box py={10}>
+                <LocalBar sx={{ fontSize: "6em", color: "#e1cfa6" }}></LocalBar>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontFamily: "'Zapfino'",
+                    color: "#e1cfa6",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Recepccion
+                </Typography>
 
-              <Grid
-                container
-                columnSpacing={{ xs: 1 }}
-                justifyContent="center"
-                display="flex"
-              >
-                <Grid size={12} paddingBottom={4}>
-                  <Typography variant="caption" color="#213628">
-                    Uabc 17108, Otay Constituyentes, 22457 Tijuana, B.C.
-                  </Typography>
+                <Grid
+                  container
+                  columnSpacing={{ xs: 1 }}
+                  justifyContent="center"
+                  display="flex"
+                >
+                  <Grid size={12} paddingBottom={4}>
+                    <Typography variant="caption" color="#213628">
+                      Uabc 17108, Otay Constituyentes, 22457 Tijuana, B.C.
+                    </Typography>
+                  </Grid>
+                  <Grid size={12}>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        color: "#213628",
+                        background:
+                          "linear-gradient(90deg, #e1cfa6 0%, #e1cfa6 50%, #e1cfa6 100%)",
+                        borderRadius: "50px", // fully rounded
+                        padding: "10px 20px",
+                      }}
+                      endIcon={
+                        <LocationOn sx={{ color: "#a29782" }}></LocationOn>
+                      }
+                    >
+                      Como Llegar
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid size={12}>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      color: "#213628",
-                      background:
-                        "linear-gradient(90deg, #e1cfa6 0%, #e1cfa6 50%, #e1cfa6 100%)",
-                      borderRadius: "50px", // fully rounded
-                      padding: "10px 20px",
-                    }}
-                    endIcon={
-                      <LocationOn sx={{ color: "#a29782" }}></LocationOn>
-                    }
-                  >
-                    Como Llegar
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
+              </Box>
+            </ScrollReveal>
           </Grid>
         </Grid>
       </Box>
@@ -852,11 +691,12 @@ export default function App() {
                   color: "#e1cfa6",
                   fontWeight: "bold",
                 }}
+                data-aos="fade-right"
               >
                 Vestimenta
               </Typography>
               <Grid container size={12} sx={{ justifyContent: "center" }}>
-                <img src="../img/dress-suit.png" width={170}></img>
+                <img src="" alt="test" width={170}></img>
               </Grid>
               <Typography
                 variant="h5"
@@ -866,6 +706,7 @@ export default function App() {
                   color: "#4A5335",
                   fontWeight: "bold",
                 }}
+                data-aos="fade-left"
               >
                 Formal
               </Typography>
@@ -894,77 +735,68 @@ export default function App() {
         </Grid>
       </Box>
 
+      {/* Timeline */}
       <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-between"
-        alignItems="center"
-        textAlign="center"
+        mb={0}
         sx={{
-          backgroundImage: `url(${background_1})`,
-          backgroundPosition: "center",
-          backgroundSize: "50%",
-          backgroundRepeat: "no-repeat",
+          backgroundImage: `url(${img_timeline})`,
         }}
       >
-        <Grid container>
-          <Box
-            p={15}
-            textAlign="center"
-            justifyContent="center"
-            alignItems="center"
+        <Box pt={35} textAlign="center">
+          <Typography
+            sx={{
+              letterSpacing: ".4rem",
+              fontSize: {
+                xs: "2.5rem", // mobile (extra small)
+                sm: "3.5rem", // tablet small
+                md: "5.5rem", // tablet/desktop medium
+                lg: "6.5rem", // desktop large
+              },
+              fontFamily: "'Zapfino'",
+              color: "#e1cfa6",
+              fontWeight: "bold",
+            }}
+            data-aos="fade-up"
           >
-            <Typography
-              sx={{
-                letterSpacing: ".4rem",
-                fontSize: {
-                  xs: "2.5rem", // mobile (extra small)
-                  sm: "3.5rem", // tablet small
-                  md: "5.5rem", // tablet/desktop medium
-                  lg: "6.5rem", // desktop large
-                },
-                fontFamily: "'Zapfino'",
-                color: "#e1cfa6",
-                fontWeight: "bold",
-              }}
-            >
-              Programa
-            </Typography>
-            <TimeLineProgram />
-          </Box>
+            Programa
+          </Typography>
+        </Box>
+        <TimeLineProgram />
+      </Box>
+
+      {/* Regalo */}
+      <Box
+        mt={-2}
+        bgcolor="#9fa99a"
+        justifyContent="center"
+        alignItems="center"
+        display="flex"
+        textAlign="center"
+      >
+        {/* Dress Code */}
+        <Grid container spacing={0} p={2}>
+          <Grid sx={{ padding: "20px", border: "5px solid #e1cfa6" }}>
+            <Box>
+              <Grid container size={12} sx={{ justifyContent: "center" }}>
+                <img src="" alt="img" width={170}></img>
+              </Grid>
+              <Typography variant="h5" sx={{}}>
+                Tu presencia es nuestro mejor regalo, pero si deseas
+                obsequiarnos algo puedes hacerlo de las siguientes formas:
+              </Typography>
+              <MailOutlineIcon
+                sx={{ fontSize: "3.5em", color: "#8C5A1F" }}
+              ></MailOutlineIcon>
+              <Typography variant="h5" color="#F6D78B">
+                Lluvia de sobres
+              </Typography>
+            </Box>
+          </Grid>
         </Grid>
       </Box>
 
       <Container>
         <Grid spacing={0} paddingY={4}>
-          <Grid>
-            <Box justifyContent="center" display="flex" textAlign="center">
-              <Card
-                sx={{
-                  bgcolor: "#232e29",
-                  maxWidth: 350,
-                  borderRadius: "20px",
-                }}
-              >
-                <CardContent>
-                  <Typography
-                    variant="body1"
-                    color="#F6D78B"
-                    sx={{ fontFamily: "monospace" }}
-                  >
-                    Tu presencia es nuestro mejor regalo, pero si deseas
-                    obsequiarnos algo puedes hacerlo de las siguientes formas:
-                  </Typography>
-                  <MailOutlineIcon
-                    sx={{ fontSize: "3.5em", color: "#8C5A1F" }}
-                  ></MailOutlineIcon>
-                  <Typography variant="h5" color="#F6D78B">
-                    Lluvia de sobres
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Box>
-          </Grid>
           <Grid size={12} height={350}>
             <Grid container>
               <Grid size={12}>
@@ -986,6 +818,7 @@ export default function App() {
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                   }}
+                  data-aos="fade-down"
                 >
                   Confirma tu asistencia!
                 </Typography>
@@ -1021,4 +854,39 @@ export default function App() {
       </Container>
     </main>
   );
+
+  function SeccionInvitacion() {
+    return (
+      <Box px={2} py={10} textAlign="center">
+        <ScrollReveal>
+          <Typography
+            variant="h2"
+            sx={{
+              fontFamily: "'Great Vibes', cursive",
+              fontSize: {
+                xs: "2.5rem",
+                sm: "3.5rem",
+              },
+              background: "linear-gradient(90deg, #213628, #C38C3F, #213628)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            ¡Estas Invitado!
+          </Typography>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.2}>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            mt={2}
+            fontSize={{ xs: "1rem", sm: "1.2rem" }}
+          >
+            Michell & Victor te esperan para celebrar juntos el 06.09.2025
+          </Typography>
+        </ScrollReveal>
+      </Box>
+    );
+  }
 }

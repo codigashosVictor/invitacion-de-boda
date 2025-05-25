@@ -1,18 +1,17 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Box, IconButton } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import { useSwipeable } from "react-swipeable";
 
-const images = [
-  "../img/fotos_pareja/V+M pedida-002.jpg",
-  "../img/fotos_pareja/V+M pedida-021.jpg",
-  "../img/fotos_pareja/V+M pedida-027.jpg",
-  "../img/fotos_pareja/V+M pedida-031.jpg",
-  "../img/fotos_pareja/V+M pedida-041.jpg",
-  "../img/fotos_pareja/V+M pedida-069.jpg",
-  "../img/fotos_pareja/V+M pedida-075.jpg",
-  "../img/fotos_pareja/V+M pedida-053.jpg",
-];
+import img1 from "../src/img/fotos_pareja/V+M pedida-002.jpg";
+import img2 from "../src//img/fotos_pareja/V+M pedida-021.jpg";
+import img3 from "../src//img/fotos_pareja/V+M pedida-027.jpg";
+import img4 from "../src//img/fotos_pareja/V+M pedida-031.jpg";
+import img5 from "../src//img/fotos_pareja/V+M pedida-041.jpg";
+import img6 from "../src//img/fotos_pareja/V+M pedida-069.jpg";
+import img7 from "../src//img/fotos_pareja/V+M pedida-075.jpg";
+import img8 from "../src//img/fotos_pareja/V+M pedida-053.jpg";
+
+const images = [img1, img2, img3, img4, img5, img6, img7, img8];
 
 const Carousel = () => {
   const [index, setIndex] = useState(0);
@@ -35,6 +34,7 @@ const Carousel = () => {
   useEffect(() => {
     timeoutRef.current = setTimeout(handleNext, 5000);
     return () => resetTimeout();
+    // eslint-disable-next-line
   }, [index]);
 
   return (
