@@ -2,8 +2,8 @@ import { Box, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { motion } from "framer-motion";
 
-const MotionBox = motion(Box);
-const MotionTypography = motion(Typography);
+const MotionBox = motion.create(Box);
+const MotionTypography = motion.create(Typography);
 
 export default function HeroSection({ img_portada, AnimatedButton }) {
   return (
@@ -76,7 +76,7 @@ export default function HeroSection({ img_portada, AnimatedButton }) {
           <Typography
             variant="h2"
             sx={{
-              fontFamily: "'Zapfino', cursive",
+              fontFamily: "'Great Vibes', cursive",
               color: "#fff",
             }}
           >
@@ -94,7 +94,7 @@ export default function HeroSection({ img_portada, AnimatedButton }) {
           </Typography>
           <Typography
             variant="h2"
-            sx={{ fontFamily: "'Zapfino', cursive", color: "#fff", pt: 1 }}
+            sx={{ fontFamily: "'Great Vibes', cursive", color: "#fff", pt: 1 }}
           >
             Victor
           </Typography>

@@ -1,0 +1,16 @@
+.card-counter {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: #b6c0b0 !important;
+  border-radius: 15%;
+}
+
+.zapfino-fix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0.7;
+  transform: translateY(-10%);
+}

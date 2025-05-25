@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import img_v_m from "../src/img/fotos_pareja/t.jpg";
 
 // Framer Motion component
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 export default function AnimatedImage({
   width = "100%",
