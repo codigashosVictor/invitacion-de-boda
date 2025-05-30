@@ -1,13 +1,20 @@
 import "./index.css";
+import { useEffect, useState } from "react";
 import { keyframes } from "@mui/system";
 import { useParams } from "react-router-dom";
+import { setDoc, getDoc, doc } from "firebase/firestore";
+import { db } from "./firebaseConfig";
+import { styled } from "@mui/material/styles";
 
+// components
 import TimeLineProgram from "../src/timeline";
 import Carousel from "./Carousel-img";
 import HeroSection from "./Hero";
 import ScrollReveal from "./ScrollReveal";
 import DressCode from "./DressCode";
 import SeccionCentral from "./SeccionCentral";
+
+// material components
 import {
   Typography,
   Button,
@@ -18,29 +25,33 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  Alert,
 } from "@mui/material";
-import { LocalBar, LocationOn } from "@mui/icons-material";
-import { styled } from "@mui/material/styles";
 
+// icons
+import { LocalBar, LocationOn } from "@mui/icons-material";
+import ChairIcon from "@mui/icons-material/Person2TwoTone";
 import ChurchIcon from "@mui/icons-material/Church";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 
 // images
 import img_portada from "../src/img/header_5.jpg";
 import img_places from "../src/img/background_places.jpeg";
-import { useState } from "react";
 
-const familias = [
-  { nombre: "Lopez", asistentes: 4 },
-  { nombre: "Ramirez", asistentes: 2 },
-  { nombre: "Garcia", asistentes: 3 },
+// array of families
+const families = [
+  { name: "Lopez", attendees: 10 },
+  { name: "Ramirez", attendees: 2 },
+  { name: "Garcia", attendees: 3 },
 ];
 
+// blink button keyframes
 const blink = keyframes`
   0%, 100% { opacity: 1; transform: translateY(0); }
   50% { opacity: 0.5; transform: translateY(5px); }
 `;
 
+// css of animated button
 const AnimatedButton = styled(Button)({
   animation: `${blink} 1.5s infinite`,
   fontSize: "2rem",
@@ -53,6 +64,8 @@ const AnimatedButton = styled(Button)({
     boxShadow: "none",
   },
 });
+
+// css of cursive text
 const cursiveText = {
   fontFamily: "'Great Vibes', cursive",
   color: "#e1cfa6",
@@ -60,18 +73,47 @@ const cursiveText = {
 };
 
 export default function Invitaction() {
-  const selectedDate = new Date(2025, 8, 6);
-  const { familia } = useParams();
-  const familiaData = familias.find(
-    (f) => f.nombre.toLowerCase() === familia?.toLowerCase()
+  const selectedDate = new Date(2025, 8, 6); // event date
+  const [isConfirmed, setIsConfirmed] = useState(false);
+  const { family } = useParams();
+  const familyData = families.find(
+    (f) => f.name.toLowerCase() === family?.toLowerCase()
   );
+  const maxattendees = familyData?.attendees || 0;
+  const [attendeesSeleccionados, setattendeesSeleccionados] = useState("");
 
-  const maxAsistentes = familiaData?.asistentes || 0;
-  const [asistentesSeleccionados, setAsisetntesSeleccionados] = useState("");
+  const checkConfirmacion = async () => {
+    const docRef = doc(db, "Confirmaciones", family);
+    const docSnap = await getDoc(docRef);
 
-  const handleChange = (event) => {
-    setAsisetntesSeleccionados(event.target.value);
+    if (docSnap.exists()) {
+      const $asis = docSnap.data().attendees;
+      setattendeesSeleccionados($asis);
+      setIsConfirmed(true);
+    }
   };
+
+  const handleConfirm = async () => {
+    if (!family || !attendeesSeleccionados) {
+      alert("Por Favor selecciona la cantidad de attendees");
+      return;
+    }
+    try {
+      await setDoc(doc(db, "Confirmaciones", family), {
+        family,
+        attendees: attendeesSeleccionados,
+        timestamp: new Date(),
+        confirmado: true,
+      });
+      setIsConfirmed(true);
+    } catch (e) {
+      console.error("error al guardar:", e);
+    }
+  };
+
+  useEffect(() => {
+    if (family) checkConfirmacion();
+  }, [family]);
 
   return (
     <main>
@@ -393,7 +435,7 @@ export default function Invitaction() {
         </Grid>
       </Box>
 
-      {familiaData ? (
+      {familyData ? (
         <Box
           sx={{
             bgcolor: "#f3f0e9",
@@ -402,7 +444,6 @@ export default function Invitaction() {
             textAlign: "center",
             borderTop: "6px double #e1cfa6",
             borderBottom: "6px double #e1cfa6",
-            mb: 10,
           }}
         >
           <Typography
@@ -414,7 +455,7 @@ export default function Invitaction() {
               fontSize: { xs: "2.5rem", sm: "3rem" },
             }}
           >
-            ¡Bienvenidos familia {familia}!
+            ¡Bienvenidos familia {family}!
           </Typography>
 
           <Typography
@@ -451,33 +492,92 @@ export default function Invitaction() {
               mx: "auto",
             }}
           >
-            <FormControl fullWidth>
-              <InputLabel id="select-asistentes-label">Asistentes</InputLabel>
-              <Select
-                labelId="select-asistentes-label"
-                value={asistentesSeleccionados}
-                onChange={handleChange}
-                label="Asistentes"
-              >
-                {Array.from({ length: maxAsistentes }, (_, i) => i + 1).map(
-                  (num) => (
-                    <MenuItem key={num} value={num}>
-                      {num}
-                    </MenuItem>
-                  )
-                )}
-              </Select>
-            </FormControl>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: 2,
+                mt: 2,
+              }}
+            >
+              {Array.from({ length: maxattendees }, (_, i) => i + 1).map(
+                (num) => {
+                  const selected = attendeesSeleccionados === num;
 
-            {asistentesSeleccionados && (
+                  return (
+                    <Box
+                      key={num}
+                      onClick={() => setattendeesSeleccionados(num)}
+                      sx={{
+                        width: 72,
+                        height: 90,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        borderRadius: "16px",
+                        backgroundColor: selected ? "#e1cfa6" : "#fffaf0",
+                        border: selected
+                          ? "2px solid #8C5A1F"
+                          : "1px solid #d8cbb3",
+                        boxShadow: selected
+                          ? "0 4px 10px rgba(140, 90, 31, 0.4)"
+                          : "0 2px 6px rgba(0,0,0,0.08)",
+                        color: selected ? "#8C5A1F" : "#8C5A1F",
+                        cursor: "pointer",
+                        transition: "all 0.3s ease-in-out",
+                        fontFamily: "'Segoe UI', sans-serif",
+                        textAlign: "center",
+                        "&:hover": {
+                          backgroundColor: "#f0e5d2",
+                        },
+                      }}
+                    >
+                      <ChairIcon sx={{ fontSize: 36, mb: 1 }} />
+                      <Typography
+                        variant="subtitle2"
+                        sx={{
+                          mt: 1,
+                          fontWeight: "bold",
+                          fontSize: "1rem",
+                        }}
+                      >
+                        {num}
+                      </Typography>
+                    </Box>
+                  );
+                }
+              )}
+            </Box>
+
+            {attendeesSeleccionados && (
               <Typography sx={{ color: "#8C5A1F" }}>
-                Has confirmado <strong>{asistentesSeleccionados}</strong>{" "}
+                Has seleccionado: <strong>{attendeesSeleccionados}</strong>{" "}
                 asistente(s).
               </Typography>
             )}
 
             <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
               <Button
+                disabled={isConfirmed}
+                variant="outlined"
+                sx={{
+                  color: "#8C5A1F",
+                  borderColor: "#8C5A1F",
+                  px: 3,
+                  fontWeight: "bold",
+                  borderRadius: "25px",
+                  "&:hover": {
+                    bgcolor: "#f1e5d4",
+                  },
+                }}
+              >
+                No podré asistir
+              </Button>
+              <Button
+                disabled={isConfirmed}
+                onClick={handleConfirm}
                 variant="contained"
                 sx={{
                   bgcolor: "#8C5A1F",
@@ -493,22 +593,12 @@ export default function Invitaction() {
               >
                 Confirmar
               </Button>
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "#8C5A1F",
-                  borderColor: "#8C5A1F",
-                  px: 3,
-                  fontWeight: "bold",
-                  borderRadius: "25px",
-                  "&:hover": {
-                    bgcolor: "#f1e5d4",
-                  },
-                }}
-              >
-                No podré asistir
-              </Button>
             </Box>
+            {isConfirmed && (
+              <Alert severity="success" sx={{ mt: 3 }}>
+                ¡Gracias! Tu asistencia ya ha sido confirmada.
+              </Alert>
+            )}
           </Box>
         </Box>
       ) : (

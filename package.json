@@ -17,6 +17,7 @@
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
     "date-fns": "^2.30.0",
+    "firebase": "^11.8.1",
     "framer-motion": "^12.12.1",
     "react": "^19.0.0",
     "react-countdown": "^2.3.6",

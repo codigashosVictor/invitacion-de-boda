@@ -5,7 +5,7 @@ const colors = ["#4A5335", "#6B704B", "#A09788", "#C4BBA9"]; // Example colors
 export default function DressCode() {
   return (
     <Box
-      bgcolor="#9fa99a"
+      bgcolor="#f3f0e9"
       display="flex"
       justifyContent="center"
       alignItems="center"

@@ -4,7 +4,11 @@ import { motion } from "framer-motion";
 
 const MotionBox = motion.create(Box);
 const MotionTypography = motion.create(Typography);
-
+const cursiveTitle = {
+  fontFamily: "'Great Vibes', cursive",
+  color: "#a29782",
+  textAlign: "center",
+};
 export default function HeroSection({ img_portada, AnimatedButton }) {
   return (
     <Box
@@ -53,9 +57,7 @@ export default function HeroSection({ img_portada, AnimatedButton }) {
           component="h1"
           textAlign="center"
           sx={{
-            color: "#BF8A4C",
-            fontFamily: "'Dancing Script', cursive",
-            fontWeight: "bold",
+            ...cursiveTitle,
             fontSize: {
               xs: "4rem",
               sm: "5.5rem",
@@ -63,7 +65,7 @@ export default function HeroSection({ img_portada, AnimatedButton }) {
               lg: "5.5rem",
             },
           }}
-          paddingTop={1}
+          marginTop={5}
         >
           Nos Casamos
         </MotionTypography>
@@ -100,9 +102,8 @@ export default function HeroSection({ img_portada, AnimatedButton }) {
           </Typography>
           <Typography
             sx={{
-              fontFamily: "'Dancing Script', cursive",
+              ...cursiveTitle,
               fontSize: "1.5rem",
-              color: "#BF8A4C",
               mt: 1,
             }}
           >

@@ -10,7 +10,7 @@ import { styled } from "@mui/material/styles";
 import ScrollReveal from "./ScrollReveal";
 import AnimatedImage from "./img-savethedate";
 import CountdownTimer from "./CountdownTimer";
-import SeccionInvitacion from "./SeccionInvitacion";
+import SeccionInvitacion from "./MensajeInicial";
 import bible_background from "./img/bible_background.jpg";
 
 const cursiveTitle = {
@@ -77,12 +77,6 @@ const CustomPickerDay = React.memo(({ day, selectedDay, ...other }) => {
     </PickersDay>
   );
 });
-
-const cursiveText = {
-  fontFamily: "'Great Vibes', cursive",
-  textAlign: "center",
-  color: "#a29782",
-};
 
 const greenColor = "#213628";
 

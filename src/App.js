@@ -5,7 +5,7 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/invitacion-de-boda/:familia" element={<Invitacion />} />
+        <Route path="/invitacion-de-boda/:family" element={<Invitacion />} />
         {/* otras rutas si necesitas */}
       </Routes>
     </Router>

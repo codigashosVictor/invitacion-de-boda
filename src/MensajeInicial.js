@@ -1,6 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import ScrollReveal from "./ScrollReveal";
-
+const cursiveTitle = {
+  fontFamily: "'Great Vibes', cursive",
+  color: "#a29782",
+  textAlign: "center",
+};
 export default function SeccionInvitacion() {
   return (
     <Box px={2} py={5} textAlign="center">
@@ -8,14 +12,11 @@ export default function SeccionInvitacion() {
         <Typography
           variant="h2"
           sx={{
-            fontFamily: "'Great Vibes', cursive",
+            ...cursiveTitle,
             fontSize: {
               xs: "3.5rem",
               sm: "3.5rem",
             },
-            background: "linear-gradient(90deg, #213628, #8C5A1F, #213628)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
           }}
         >
           ¡Estas Invitado!
