@@ -3,10 +3,10 @@ import Invitacion from "./Invitacion";
 // App.js
 export default function App() {
   return (
-    <HashRouter basename="/invitacion-de-boda">
+    <Router>
       <Routes>
-        <Route path="/invitacion-de-boda/:family" element={<Invitacion />} />
+        <Route path="/:family" element={<Invitacion />} />
       </Routes>
-    </HashRouter>
+    </Router>
   );
 }

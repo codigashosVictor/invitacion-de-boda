@@ -1,5 +1,5 @@
 import "./index.css";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { keyframes } from "@mui/system";
 import { useParams } from "react-router-dom";
 import { setDoc, getDoc, doc } from "firebase/firestore";
@@ -15,18 +15,7 @@ import DressCode from "./DressCode";
 import SeccionCentral from "./SeccionCentral";
 
 // material components
-import {
-  Typography,
-  Button,
-  Grid,
-  Box,
-  Divider,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Alert,
-} from "@mui/material";
+import { Typography, Button, Grid, Box, Divider, Alert } from "@mui/material";
 
 // icons
 import { LocalBar, LocationOn } from "@mui/icons-material";
@@ -76,13 +65,16 @@ export default function Invitaction() {
   const selectedDate = new Date(2025, 8, 6); // event date
   const [isConfirmed, setIsConfirmed] = useState(false);
   const { family } = useParams();
+
+  console.log(family);
+
   const familyData = families.find(
     (f) => f.name.toLowerCase() === family?.toLowerCase()
   );
   const maxattendees = familyData?.attendees || 0;
   const [attendeesSeleccionados, setattendeesSeleccionados] = useState("");
 
-  const checkConfirmacion = async () => {
+  const checkConfirmacion = useCallback(async () => {
     const docRef = doc(db, "Confirmaciones", family);
     const docSnap = await getDoc(docRef);
 
@@ -91,7 +83,7 @@ export default function Invitaction() {
       setattendeesSeleccionados($asis);
       setIsConfirmed(true);
     }
-  };
+  }, [family]);
 
   const handleConfirm = async () => {
     if (!family || !attendeesSeleccionados) {
@@ -113,7 +105,7 @@ export default function Invitaction() {
 
   useEffect(() => {
     if (family) checkConfirmacion();
-  }, [family]);
+  }, [family, checkConfirmacion]);
 
   return (
     <main>
