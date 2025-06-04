@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/invitacion-de-boda/static/css/main.e3112236.css",
-    "main.js": "/invitacion-de-boda/static/js/main.0eea0221.js",
+    "main.js": "/invitacion-de-boda/static/js/main.b0f4b3da.js",
     "static/media/header_5.jpg": "/invitacion-de-boda/static/media/header_5.ca06b7132b099f4aa699.jpg",
     "static/media/bible_background.jpg": "/invitacion-de-boda/static/media/bible_background.0620c4f401f4b6bb4c7e.jpg",
     "static/media/V+M pedida-075.jpg": "/invitacion-de-boda/static/media/V+M pedida-075.d786afb61f2c6c9cad37.jpg",
@@ -16,10 +16,10 @@
     "static/media/background_places.jpeg": "/invitacion-de-boda/static/media/background_places.3f4fae1f137e3db661a0.jpeg",
     "index.html": "/invitacion-de-boda/index.html",
     "main.e3112236.css.map": "/invitacion-de-boda/static/css/main.e3112236.css.map",
-    "main.0eea0221.js.map": "/invitacion-de-boda/static/js/main.0eea0221.js.map"
+    "main.b0f4b3da.js.map": "/invitacion-de-boda/static/js/main.b0f4b3da.js.map"
   },
   "entrypoints": [
     "static/css/main.e3112236.css",
-    "static/js/main.0eea0221.js"
+    "static/js/main.b0f4b3da.js"
   ]
 }
